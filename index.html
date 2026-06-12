@@ -6,34 +6,87 @@
 <title>World Cup Bracket Predictions</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #f0f4f8;
+    /* Full viewport height so scroll happens on body, not a div */
     height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     padding: 24px;
   }
-  h1 { text-align: center; margin-bottom: 18px; color: #1a2e4a; font-size: 1.5rem; letter-spacing: .5px; flex-shrink: 0;}
+
+  h1 {
+    text-align: center;
+    margin-bottom: 18px;
+    color: #1a2e4a;
+    font-size: 1.5rem;
+    letter-spacing: .5px;
+    flex-shrink: 0;
+  }
+
+  /* The wrapper takes remaining height and scrolls both axes */
   .wrapper {
     flex: 1;
-    overflow: auto;
+    overflow: auto;       /* both axes scroll here */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0,0,0,.12);
   }
-  table { border-collapse: collapse; width: max-content; min-width: 100%; font-size: .78rem; }
-  th { background: #1a2e4a; color: #fff; padding: 9px 12px; white-space: nowrap;
-        position: sticky; top: 0; z-index: 2; text-align: center; }
-  td { padding: 7px 12px; white-space: nowrap; text-align: center; border-bottom: 1px solid #dde3eb; }
-  .sticky-col { position: sticky; left: 0; z-index: 1; text-align: left; font-weight: 600; }
-  th.sticky-col { z-index: 3; background: #1a2e4a; }
-  tr.even td.sticky-col { background: #eaf0f8; }
-  tr.odd  td.sticky-col { background: #f7f9fc; }
-  tr.even td { background: #eaf0f8; }
-  tr.odd  td { background: #f7f9fc; }
-  tr:hover td { background: #d0e4f5 !important; }
-  td:not(.sticky-col) { font-family: 'Courier New', monospace; color: #2c5f8a; font-weight: 600; }
+
+  table {
+    border-collapse: collapse;
+    width: max-content;
+    font-size: .78rem;
+  }
+
+  /* Sticky header row */
+  th {
+    background: #1a2e4a;
+    color: #fff;
+    padding: 9px 12px;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;          /* sticks to top of .wrapper scroll container */
+    z-index: 2;
+    text-align: center;
+  }
+
+  td {
+    padding: 7px 12px;
+    white-space: nowrap;
+    text-align: center;
+    border-bottom: 1px solid #dde3eb;
+  }
+
+  /* Sticky first column */
+  .sticky-col {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  /* Top-left corner cell: sticky on BOTH axes */
+  th.sticky-col {
+    z-index: 3;
+    background: #1a2e4a;
+  }
+
+  /* Alternating row colours — also applied to sticky-col cells so they don't go transparent */
+  tr.even td             { background: #eaf0f8; }
+  tr.odd  td             { background: #f7f9fc; }
+  tr.even td.sticky-col  { background: #eaf0f8; }
+  tr.odd  td.sticky-col  { background: #f7f9fc; }
+  tr:hover td            { background: #d0e4f5 !important; }
+
+  td:not(.sticky-col) {
+    font-family: 'Courier New', monospace;
+    color: #2c5f8a;
+    font-weight: 600;
+  }
 </style>
 </head>
 <body>
