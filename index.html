@@ -6,9 +6,22 @@
 <title>World Cup Bracket Predictions</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; padding: 24px; }
-  h1 { text-align: center; margin-bottom: 18px; color: #1a2e4a; font-size: 1.5rem; letter-spacing: .5px; }
-  .wrapper { overflow-x: auto; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,.12); }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f4f8;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+  }
+  h1 { text-align: center; margin-bottom: 18px; color: #1a2e4a; font-size: 1.5rem; letter-spacing: .5px; flex-shrink: 0;}
+  .wrapper {
+    flex: 1;
+    overflow: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.12);
+  }
   table { border-collapse: collapse; width: max-content; min-width: 100%; font-size: .78rem; }
   th { background: #1a2e4a; color: #fff; padding: 9px 12px; white-space: nowrap;
         position: sticky; top: 0; z-index: 2; text-align: center; }
